@@ -1,3 +1,60 @@
 body {
     background-color: rgb(231, 231, 231);
 }
+
+aside {
+    float: left;
+    background-color: rgb(169, 169, 169);
+    width: 20%;
+    padding: 2.5%;
+    height: 100vh;
+    color: rgb(255, 255, 255);
+    border-right: 5px solid  rgb(90, 90, 90);
+}
+
+aside img {
+    width: 50px;
+    float: left;
+}
+
+aside .logo {
+    font-size: 17px;
+    margin-left: 10px;
+    font-weight: bold;
+    position: relative;
+    top: 10px;
+    color: black;
+}
+
+aside h3 {
+    margin-top: 40px;    
+    font-size: 25px;
+}
+
+aside ul {list-style: none} /*убираем буллет поинты*/
+
+aside ul li a {
+    color: rgb(255, 255, 255);
+    display: block;
+    margin-top: 20px;
+    text-decoration: none; /*убираем подчёркивание*/
+    font-size: 18px;
+    transition: transform .2s ease; /*плавность*/
+}
+
+aside ul li a:hover{ /*изменение текста при наведении курсора*/
+    color: rgb(0, 0, 0);
+    transform: scale(1.05); /*увеличение текста*/
+}
+
+main .features {
+    float: left;
+    color: rgb(0, 0, 0);
+    margin-top: 100px;
+    text-align: center;
+    width: 75%;
+}
+
+main .features h1 {font-size: 50px;}
+
+main .features p {font-size: 30px;}
