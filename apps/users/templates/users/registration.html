@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{ title }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control w-50" id="email" name="email" style="margin: 0 auto" required>
+            </div>
+            <div class="mb-3">
+                <label for="password1" class="form-label">Password:</label>
+                <input type="password" class="form-control w-50" id="password1" name="password1" style="margin: 0 auto" required>
+            </div>
+            <div class="mb-3">
+                <label for="password2" class="form-label">Confirm password:</label>
+                <input type="password" class="form-control w-50" id="password2" name="password" style="margin: 0 auto" required>
+            </div>
+            <button type="submit" class="btn btn-warning">Sign up</button>
+        </form>
+    </div>
+{% endblock %}
