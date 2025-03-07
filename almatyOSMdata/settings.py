@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'almatyOSMdata.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'almatyosmdata_auth_db',
+        'USER': 'auth_user',
+        'PASSWORD': 'Dai_f78%$$!_$##nd',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -100,6 +104,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Авторизация
+AUTH_USER_MODEL = 'users.CustomUser'  # Django будет использовать модель CustomUser из '...\almatyOSMdata\apps\users\models.py'
 
 
 # Internationalization
