@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def users(request):
+def auth(request):
     data = {
         'title': 'Registraton form'
     }
