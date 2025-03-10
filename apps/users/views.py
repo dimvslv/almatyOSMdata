@@ -14,14 +14,15 @@ def register(request): # Определяем представление (view) 
 
     context = {
         "register_form": register_form,
-        "title": 'Registration form'
+        "title": "Registration form"
     }
 
     return render(request, 'users/registration.html', context)
     # Отправляем HTML-шаблон и передаём в него объект формы, чтобы пользователь мог заполнить её
 
-    # Функция render() принимает четыре аргумента:
+    # Функция render() принимает три аргумента:
     # request — объект запроса.
     # "users/registration.html" — путь к HTML-шаблону, который нужно отобразить.
-    # {"register_form": form} — Имя, формы созданной в переменной form, которое передаётся в шаблон.
-    # data — текст для отображения заголовка в HTML-шаблоне
+    # словарь context с дополнительными данными:
+    # "register_form": form — Имя, формы созданной в переменной form, которое передаётся в шаблон.
+    # "title": 'Registration form' — текст для отображения заголовка на странице регистрации
