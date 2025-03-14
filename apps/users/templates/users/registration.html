@@ -7,40 +7,38 @@
 {% block content %}
     {# Центрируем форму по вертикали и горизонтали #}
     <div class="features d-flex justify-content-center align-items-center">        
-        {# Контейнер для формы регистрации с выравниваем по центру #}
-        <div class="container d-flex justify-content-center">
-            <div class="row">
-                <div class="col-md-12"> {# Ширина формы #}
-                    <h1 class="text-center">{{ title }}</h1>
+        {# Контейнер для формы регистрации с выравниваем по центру #}        
+        <div class="row">
+            <div class="col-md-12"> {# Ширина формы #}
+                <h2 class="text-center">{{ title }}</h2>
 
-                    {# Форма регистрации #}
-                    <form method="post" class="form-group text-center">
-                        {% csrf_token %}  {# Зашита от CSRF атак #}
+                {# Форма регистрации #}
+                <form method="post" class="form-group text-center">
+                    {% csrf_token %}  {# Зашита от CSRF атак #}
                         
-                        {# Вывод полей регистрации #}
-                        {% for field in register_form %}
-                            <div class="mb-3">
-                                {{ field.label_tag }}  {# выводим подпись к полю #}
-                                <div class="d-flex justify-content-center">
-                                    {{ field }} {# выводим поле #}
-                                </div>
-                                
-                                {# Вывод ошибок валидации, если есть#}
-                                {% if field.errors %}
-                                    <div class="alert alert-danger mt-3 p-2 rounded border-1"> {# блок для вывода ошибок #}
-                                        {% for error in field.errors %}    
-                                            <small class="fw-normal">{{ error }}</small>  {# вывод ошибок #}
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
+                    {# Вывод полей регистрации #}
+                    {% for field in register_form %}
+                        <div class="mb-3">
+                            {{ field.label_tag }}  {# выводим подпись к полю #}
+                            <div class="d-flex justify-content-center">
+                                {{ field }} {# выводим поле #}
                             </div>
-                        {% endfor %}
+                                
+                            {# Вывод ошибок валидации, если есть#}
+                            {% if field.errors %}
+                                <div class="alert alert-danger mt-3 p-2 rounded border-1"> {# блок для вывода ошибок #}
+                                    {% for error in field.errors %}    
+                                        <small class="fw-normal">{{ error }}</small>  {# вывод ошибок #}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
                         
-                        {# Кнопка отправки формы #}
-                        <button type="submit" class="btn btn-warning">Submit</button>
-                    </form>
-                </div>
-            </div>        
+                    {# Кнопка отправки формы #}
+                    <button type="submit" class="btn btn-warning">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}
