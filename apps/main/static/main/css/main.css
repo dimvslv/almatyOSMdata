@@ -73,11 +73,24 @@ aside .aside-bottom {
 main .features {
     float: left;
     color: rgb(0, 0, 0);
-    margin-top: 100px;
+    margin-top: 50px;
     text-align: center;
     width: 75%;
 }
 
-main .features h1 {font-size: 50px;}
+main .features h1 {font-size: 40px;}
 
-main .features p {font-size: 30px;}
+main .features p {font-size: 20px;}
+
+main .features button {
+    margin-top: 10px;
+}
+
+main .features #map {
+    width: 95%; /* Задаём ширину 90% от родителя */
+    max-width: 1000px; /* Ограничиваем максимальную ширину */
+    height: 500px;
+    margin: 20px auto; /* Автоматические отступы для центрирования */
+    border: 2px solid #ccc; /* Опционально: рамка для визуального выделения */
+    border-radius: 10px; /* Опционально: скругление углов */
+}
