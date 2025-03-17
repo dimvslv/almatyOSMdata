@@ -3,6 +3,9 @@ body {
 }
 
 aside {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение элементов */
+    justify-content: space-between; /* Раздвигает элементы, отправляя aside-bottom вниз */
     float: left;
     background-color: rgb(169, 169, 169);
     width: 20%;
@@ -31,20 +34,40 @@ aside h3 {
     font-size: 25px;
 }
 
-aside ul {list-style: none} /*убираем буллет поинты*/
+aside .nav-list,
+aside .aside-bottom {
+    padding: 0; /* Убираем лишние отступы */
+    margin: 0;
+    width: 100%; /* Чтобы заняли всю ширину */
+}
 
-aside ul li a {
+/* Убираем буллеты у списков */
+aside .nav-list,
+aside .aside-bottom {
+    list-style: none;
+}
+
+/* Общие стили для ссылок */
+aside .nav-list li a,
+aside .aside-bottom li a {
     color: rgb(255, 255, 255);
     display: block;
     margin-top: 20px;
-    text-decoration: none; /*убираем подчёркивание*/
+    text-decoration: none; /* Убираем подчёркивание */
     font-size: 18px;
-    transition: transform .2s ease; /*плавность*/
+    transition: transform 0.2s ease; /* Плавность */
 }
 
-aside ul li a:hover{ /*изменение текста при наведении курсора*/
+/* Эффект наведения */
+aside .nav-list li a:hover,
+aside .aside-bottom li a:hover {
     color: rgb(0, 0, 0);
-    transform: scale(1.05); /*увеличение текста*/
+    transform: scale(1.05); /* Увеличение текста */
+}
+
+/* Чтобы aside-bottom автоматически уходил вниз */
+aside .aside-bottom {
+    margin-top: auto;
 }
 
 main .features {

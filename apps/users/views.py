@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect  # Функции для рендеринга шаблонов и перенаправления
 from .forms import CustomUserCreationForm  # Импортируем кастомную форму регистрации созданную в forms.py
-
+from django.contrib.auth.views import LoginView
+from django.contrib import messages
 # Create your views here.
 
 def register(request): # Определяем представление (view) для регистрации пользователей    
@@ -26,3 +27,10 @@ def register(request): # Определяем представление (view) 
         # 3. словарь context с дополнительными данными:
             # - "register_form": form — Имя, формы созданной в переменной form, которое передаётся в шаблон.
             # - "title": 'Registration form' — текст для отображения заголовка на странице регистрации
+
+class CustomLoginView(LoginView):
+    template_name = 'users/login.html'
+
+    def form_invalid(self, form):
+        messages.error(self.request, "Incorrect login or password")
+        return super().form_invalid(form)
