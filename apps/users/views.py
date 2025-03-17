@@ -1,8 +1,5 @@
 from django.shortcuts import render, redirect  # Функции для рендеринга шаблонов и перенаправления
 from .forms import CustomUserCreationForm  # Импортируем кастомную форму регистрации созданную в forms.py
-from django.contrib.auth.views import LoginView
-from django.urls import reverse_lazy
-from .forms import CustomAuthenticationForm  # Импортируем кастомную форму аутентификации созданную в forms.py
 
 # Create your views here.
 
@@ -11,7 +8,7 @@ def register(request): # Определяем представление (view) 
         register_form = CustomUserCreationForm(request.POST)  # Создаём объект формы и заполняем его данными из запроса
         if register_form.is_valid():  # Проверяем, прошла ли форма валидацию (корректные ли данные введены)
             register_form.save()  # Если форма валидна, сохраняем нового пользователя в базе данных
-            return redirect("main")  # После успешной регистрации перенаправляем пользователя на страницу входа
+            return redirect("login")  # После успешной регистрации перенаправляем пользователя на страницу входа
     else: # Если это GET-запрос (пользователь просто открывает страницу)
         register_form = CustomUserCreationForm()
 
@@ -29,8 +26,3 @@ def register(request): # Определяем представление (view) 
         # 3. словарь context с дополнительными данными:
             # - "register_form": form — Имя, формы созданной в переменной form, которое передаётся в шаблон.
             # - "title": 'Registration form' — текст для отображения заголовка на странице регистрации
-
-class CustomLoginView(LoginView):
-    template_name = 'users/login.html'
-    authentication_form = CustomAuthenticationForm
-    next_page = reverse_lazy('main')

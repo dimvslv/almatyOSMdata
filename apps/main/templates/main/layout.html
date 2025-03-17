@@ -16,16 +16,26 @@
         <span class="logo">Almaty OSM Data</span>
         <h3>Navigation</h3>
         <ul>
-            <li><a href="{% url 'main' %}"><i class="fa-solid fa-earth-americas"></i> home</a></li>
-            <li><a href=""><i class="fa-solid fa-gauge"></i> dashboard</a></li>
-            <li><a href="{% url 'about' %}"><i class="fa-solid fa-address-card"></i> about</a></li>
-            <li><a href="{% url 'login' %}"><i class="fa-solid fa-address-card"></i> login</a></li>
-            <li><a href="{% url 'register' %}"><i class="fa-solid fa-address-card"></i> registration</a></li>
+            <li><a href="{% url 'main' %}"><i class="fa-solid fa-earth-americas"></i> Home</a></li>
+            <li><a href=""><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+            <li><a href="{% url 'about' %}"><i class="fa-solid fa-address-card"></i> About</a></li>
+            {% if request.user.is_authenticated %}
+                <li><p class="text-white">You logged in as <b>{{ request.user.username }}</b></p></li>
+                <li>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-sign-out-alt"></i> Logout</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login'%}"><i class="fa-solid fa-sign-in-alt"></i> Login</a></li>
+                <li><a href="{% url 'register' %}"><i class="fa-solid fa-user-plus"></i> Registration</a></li>
+            {% endif %}            
         </ul>        
     </aside>
     <main>
         {% block content %}
         {% endblock %}
-    </main> 
+    </main>
 </body>
 </html>
