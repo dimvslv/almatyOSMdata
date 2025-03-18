@@ -9,21 +9,34 @@
 
         <!-- Подключаем Leaflet -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-        <div id="map" style="height: 500px;"></div>
+        <div id="map"></div>
 
-        <!-- Подключаем osmtogeojson с работающего CDN -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/osmtogeojson/3.0.0/osmtogeojson.min.js" defer></script>
+        <script>
+            var map = L.map('map').setView([43.25, 76.95], 12);  // Координаты Алматы
+    
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
 
-        <script defer>
-            document.addEventListener("DOMContentLoaded", function () {
-                let map = L.map('map').setView([43.2567, 76.9286], 12); // Алматы
-
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; OpenStreetMap contributors'
-                }).addTo(map);
-            });
+             // Функция стиля для границы
+            function boundaryStyle(feature) {
+                return {
+                    color: "red",      // Красная линия
+                    weight: 2,         // Толщина линии
+                    opacity: 1,        // Полностью непрозрачная
+                    fillColor: "none"  // Без заливки
+                };
+            }
+    
+            // Загружаем границу Алматы из Django API
+            fetch('/get_almaty_boundary/')
+                .then(response => response.json())
+                .then(data => {
+                    L.geoJSON(data, { style: boundaryStyle }).addTo(map);
+                })
+                .catch(error => console.error('Ошибка загрузки данных:', error));
         </script>
 
         <button class="btn btn-warning">Download layers in .shp format</button>

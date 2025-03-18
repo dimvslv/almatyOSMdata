@@ -6,10 +6,10 @@ venv/
 
 # Кэш и временные файлы
 __pycache__/
+cache/
 *.pyc
 *.pyo
 *.log
-db.sqlite3
 
 # Файлы IDE
 .vscode/
