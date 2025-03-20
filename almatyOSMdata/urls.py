@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.main.urls')),
     path('users/', include('apps.users.urls')),
+    path('api/', include('apps.osm_data.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

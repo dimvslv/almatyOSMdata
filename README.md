@@ -62,9 +62,9 @@ DjangoProject_name_2025_v1/
 │   ├── dashboard/        # Admin panel templates
 │   └── maps/             # Map interface templates
 │
-├── venv/                 # Virtual environment (should not be included in the repository)
+├── venv/                 # Virtual environment
 │
-├── .env                  # Environment variables (should not be included in the repository)
+├── .env                  # Environment variables
 ├── .gitignore            # Git ignore file
 ├── manage.py             # Django management script
 ├── README.md             # Project documentation
@@ -116,5 +116,4 @@ python manage.py runserver
 This project is distributed under an open-source license. Use it for educational and research purposes.
 
 ## 💎 Contacts
-email@example.com | [GitHub](https://github.com/your-repo)
-
+wasilev1994@gmail.com

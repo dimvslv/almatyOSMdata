@@ -46,8 +46,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django_extensions',
+    'django.contrib.gis',
     'apps.main',
     'apps.users',
+    'apps.osm_data',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -95,12 +97,20 @@ load_dotenv()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
-    }
+        'NAME': os.getenv('DB1_NAME'),
+        'USER': os.getenv('DB1_USER'),
+        'PASSWORD': os.getenv('DB1_PASSWORD'),
+        'HOST': os.getenv('DB1_HOST'),
+        'PORT': os.getenv('DB1_PORT'),
+    },
+    'osm_db': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': os.getenv('DB2_NAME'),
+        'USER': os.getenv('DB2_USER'),
+        'PASSWORD': os.getenv('DB2_PASSWORD'),
+        'HOST': os.getenv('DB2_HOST'),
+        'PORT': os.getenv('DB2_PORT'),
+    },
 }
 
 

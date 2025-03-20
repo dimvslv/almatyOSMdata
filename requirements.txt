@@ -1,0 +1,4 @@
+GDAL 3.5.2, released 2022/09/02
+QGIS, ogr2ogr
+geos 0.2.3
+psycopg2-binary 2.9.10

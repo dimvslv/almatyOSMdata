@@ -21,7 +21,7 @@
             }).addTo(map);
 
              // Функция стиля для границы
-            function boundaryStyle(feature) {
+            function LineStyle(feature) {
                 return {
                     color: "red",      // Красная линия
                     weight: 2,         // Толщина линии
@@ -29,14 +29,22 @@
                     fillColor: "none"  // Без заливки
                 };
             }
-    
-            // Загружаем границу Алматы из Django API
-            fetch('/get_almaty_boundary/')
+            
+            // # TEST: Loading OSM data using osmnx
+            //fetch('/get_almaty_boundary/')
+                //.then(response => response.json())
+                //.then(data => {
+                    //L.geoJSON(data, { style: LineStyle }).addTo(map);
+                //})
+                //.catch(error => console.error('Error:', error));
+
+            // Загрузка дорог Алматы из БД OSM используля кастомный API
+            fetch('/api/lines/')
                 .then(response => response.json())
                 .then(data => {
-                    L.geoJSON(data, { style: boundaryStyle }).addTo(map);
+                    L.geoJSON(data, { style: LineStyle }).addTo(map);
                 })
-                .catch(error => console.error('Ошибка загрузки данных:', error));
+                .catch(error => console.error('Error:', error));
         </script>
 
         <button class="btn btn-warning">Download layers in .shp format</button>

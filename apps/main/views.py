@@ -17,11 +17,14 @@ def index(request):
 def about(request):
     return render(request, 'main/about.html')
 
-def get_almaty_boundary(request):
-    place_name = "Алматы, Казахстан"
-    almaty_boundary_gdf = ox.geocode_to_gdf(place_name)
+
+# TEST: Loading OSM data using osmnx
+
+#def get_almaty_boundary(request):
+    #place_name = "Алматы, Казахстан"
+    #almaty_boundary_gdf = ox.geocode_to_gdf(place_name)
     
     # Преобразуем GeoDataFrame в словарь (Python dict)
-    almaty_boundary_data = almaty_boundary_gdf.__geo_interface__
+    #almaty_boundary_data = almaty_boundary_gdf.__geo_interface__
 
-    return JsonResponse(almaty_boundary_data, safe=False) # safe=False разрешает отдавать списки
+    #return JsonResponse(almaty_boundary_data, safe=False) # safe=False разрешает отдавать списки
