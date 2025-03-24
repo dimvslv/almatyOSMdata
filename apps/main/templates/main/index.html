@@ -38,11 +38,18 @@
                 //})
                 //.catch(error => console.error('Error:', error));
 
-            // Загрузка дорог Алматы из БД OSM используля кастомный API
+            // Загрузка слоёв из БД OSM используля кастомный API
             fetch('/api/lines/')
                 .then(response => response.json())
                 .then(data => {
                     L.geoJSON(data, { style: LineStyle }).addTo(map);
+                })
+                .catch(error => console.error('Error:', error));
+
+            fetch('/api/points/')
+                .then(response => response.json())
+                .then(data => {
+                    L.geoJSON(data).addTo(map);
                 })
                 .catch(error => console.error('Error:', error));
         </script>
